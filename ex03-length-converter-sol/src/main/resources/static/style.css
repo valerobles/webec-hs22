@@ -1,0 +1,32 @@
+/* open source font from https://fonts.google.com/ */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Fira Sans', sans-serif;
+    height: 100%;
+    margin: 0;
+    background-color: whitesmoke;
+}
+
+main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1em 2em;
+    height: calc(100% - 2em); /* subtract vertical padding */
+    background-color: white;
+}
+
+label {
+    display: inline-block;
+    min-width: 4em;
+}
+
+input {
+    padding: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+}

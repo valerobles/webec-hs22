@@ -1,0 +1,24 @@
+{# @pebvariable name="feet" type="int" #}
+{# @pebvariable name="inches" type="int" #}
+{# @pebvariable name="cmPart" type="int" #}
+{# @pebvariable name="mmPart" type="int" #}
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style.css">
+    <title>Length Converter – Result</title>
+</head>
+<body>
+<main>
+    <h1>Result</h1>
+    <p>
+        {{ feet }}′ {{ inches }}″ is equal to {{ cmPart }} cm and {{ mmPart }} mm
+    </p>
+    <p>
+        <a href="/">Back</a>
+    </p>
+</main>
+</body>
+</html>
