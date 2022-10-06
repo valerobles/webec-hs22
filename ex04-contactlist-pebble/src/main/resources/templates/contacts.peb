@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ href("/style.css") }}">
+    <title>Contacts</title>
+</head>
+<div id="container">
+    <header>
+        <h1>Contact List</h1>
+    </header>
+    <main>
+        <h1>Contacts</h1>
+        <p><em>TODO</em></p>
+    </main>
+    <footer>
+        built with <a href="https://spring.io/">Spring</a>
+    </footer>
+</div>
+</html>
