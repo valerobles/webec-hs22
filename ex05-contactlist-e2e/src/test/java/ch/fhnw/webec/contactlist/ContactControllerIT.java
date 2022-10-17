@@ -18,10 +18,22 @@ public class ContactControllerIT {
     @Test
     public void testDisplayAllContact(){
         WebDriver driver = new HtmlUnitDriver();
-        driver.navigate().to("http://localhost:" + port + "/contacts");
-        var contactList = driver.findElements(By.cssSelector("#contacts > nav  li"));
-        Assertions.assertEquals(30, contactList.size());
+        var page = ContactsPage.create(driver,port);
+        Assertions.assertEquals(30, page.getLinks().size());
 
 
     }
+
+    @Test
+    public void testClickContactLink(){
+        var driver = new HtmlUnitDriver();
+        var page = ContactsPage.create(driver,port);
+        page.getLinks().get(0).click();
+        var table = page.getTable();
+        Assertions.assertTrue(table.isPresent());
+        Assertions.assertTrue(table.get().getText().contains("Mabel"));
+
+    }
+
+
 }
