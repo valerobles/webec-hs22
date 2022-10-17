@@ -1,0 +1,10 @@
+{% extends "layout" %}
+
+{% block title %}Contact List – Home{% endblock %}
+
+{% block main%}
+<main>
+    <h1>Contact List</h1>
+    <p>Welcome to the Contact List App.</p>
+</main>
+{% endblock %}

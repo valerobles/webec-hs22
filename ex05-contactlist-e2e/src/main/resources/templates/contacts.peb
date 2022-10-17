@@ -1,0 +1,44 @@
+{# @pebvariable name="contactList" type="java.util.List<ch.fhnw.webec.contactlist.model.ContactListEntry>" #}
+{# @pebvariable name="contact" type="ch.fhnw.webec.contactlist.model.Contact" #}
+
+{% extends "layout" %}
+{% import "macros/contacts" %}
+
+{% block title %}Contact List – Contacts{% endblock %}
+
+{% block main%}
+<main id="contacts">
+    <nav>
+        <ul>
+            {% for entry in contactList %}
+                <li>
+                    <a href="{{ href("/contacts/" + entry.id) }}"
+                       class="{{ contact.id == entry.id ? "active" : "" }}">
+                        {{ entry.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+    <div>
+        {% if response.status == 404 %}
+            <div class="error">
+                <strong>404</strong> – Contact not found
+            </div>
+        {% elseif contact == null %}
+            <div class="info">
+                Select a contact on the left
+            </div>
+        {% else %}
+            <table>
+                {{ row("First name", contact.firstName) }}
+                {{ row("Last name", contact.lastName) }}
+                {{ listRow("Email addresses", contact.email) }}
+                {{ listRow("Phone numbers", contact.phone) }}
+                {{ row("Job title", contact.jobTitle) }}
+                {{ row("Company", contact.company) }}
+            </table>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}

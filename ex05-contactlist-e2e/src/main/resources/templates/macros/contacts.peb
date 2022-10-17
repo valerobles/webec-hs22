@@ -1,0 +1,23 @@
+{% macro row(name, value) %}
+    {% if value != null %}
+        <tr>
+            <th>{{ name }}</th>
+            <td>{{ value }}</td>
+        </tr>
+    {% endif %}
+{% endmacro %}
+
+{% macro listRow(name, list) %}
+    {% if not list.isEmpty %}
+        <tr>
+            <th>{{ name }}</th>
+            <td>
+                <ul>
+                    {% for elem in list %}
+                        <li>{{ elem }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    {% endif %}
+{% endmacro %}
