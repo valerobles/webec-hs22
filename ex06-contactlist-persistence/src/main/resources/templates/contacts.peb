@@ -1,0 +1,63 @@
+{# @pebvariable name="contactList" type="java.util.List<ch.fhnw.webec.contactlist.model.ContactListEntry>" #}
+{# @pebvariable name="contact" type="ch.fhnw.webec.contactlist.model.Contact" #}
+{# @pebvariable name="errorMessage" type="java.util.String" #}
+
+{% extends "layout" %}
+{% import "macros/contacts" %}
+
+{% block title %}Contact List – Contacts{% endblock %}
+
+{% block main%}
+<main id="contacts">
+    {% set search = request.getParameter("search") %}
+    <nav>
+        <ul>
+            {% for entry in contactList %}
+                <li>
+                    <a href="{{ href("/contacts/" + entry.id + (search != null ? "?search=" + search : "")) }}"
+                       class="{{ contact.id == entry.id ? "active" : "" }}">
+                        {{ entry.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+    <div>
+        <div id="contact-search">
+            <form method="get" action="{{ href("/contacts") }}">
+                <input type="text" placeholder="Search contacts" name="search"
+                       value="{{ search }}" required
+                       minlength="{{ beans.environment.getProperty("contact-list.search.min-length") }}">
+                <input type="submit" value="Search">
+                {% if search != null %}
+                    <a class="button clear" href="{{ request.servletPath }}">Clear</a>
+                {% endif %}
+            </form>
+        </div>
+        {% if errorMessage != null %}
+            <div class="error" id="contact-error">
+                {{ errorMessage }}
+            </div>
+        {% elseif contact == null %}
+            {% if search == null %}
+                <div class="info" id="select-contact-msg">
+                    Select a contact on the left
+                </div>
+            {% else %}
+                <div class="info" id="contacts-found-msg">
+                    {{ contactList.size }} contacts found
+                </div>
+            {% endif %}
+        {% else %}
+            <table>
+                {{ row("First name", "first-name", contact.firstName, search) }}
+                {{ row("Last name", "last-name", contact.lastName, search) }}
+                {{ listRow("Email addresses", "email", contact.email, search) }}
+                {{ listRow("Phone numbers", "phone", contact.phone, search) }}
+                {{ row("Job title", "job-title", contact.jobTitle, search) }}
+                {{ row("Company", "company", contact.company, search) }}
+            </table>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}

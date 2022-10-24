@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap');
+
+body {
+    font-family: 'Krub', sans-serif;
+    font-size: 120%;
+    margin: 0;
+    background-color: whitesmoke;
+}
+
+#container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header, footer {
+    text-align: center;
+}
+
+header h1 {
+    font-size: 300%;
+    font-weight: 200;
+    color: crimson;
+}
+
+header nav ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+header nav li {
+    list-style: none;
+    display: inline-block;
+}
+
+header nav a {
+    width: 6em;
+}
+
+header nav ul, main {
+    background: white;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.20);
+}
+
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 10px 12px;
+    color: #737373;
+}
+
+nav .active {
+    color: crimson;
+}
+
+nav a:hover {
+    background-color: crimson;
+    color: white;
+}
+
+main {
+    margin: -1.5em 0 1em;
+    padding: 3em 2em 2em;
+}
+
+main > :last-child {
+    margin-bottom: 0;
+}
+
+main > :first-child {
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 120%;
+}
+
+h2 {
+    font-size: 100%;
+}
+
+h1, h2 {
+    margin-bottom: 0.5em;
+}
+
+a {
+    color: crimson;
+}
+
+a:not(:hover) {
+    text-decoration: none;
+}
+
+td {
+    padding-right: 1em;
+}
+
+footer {
+    font-size: 80%;
+    color: #737373;
+    margin-bottom: 2em;
+}
+
+.info {
+    background: whitesmoke;
+    color: #737373;
+}
+
+.error {
+    background: #fff2f7;
+    color: crimson;
+}
+
+.info, .error {
+    padding: 1em 1.1em 1.1em;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+tr > * {
+    padding: 0.4em 0.8em;
+}
+
+tr:not(:last-child) > * {
+    border-bottom: whitesmoke 2px solid;
+}
+
+tr > :last-child {
+    padding-right: 0;
+}
+
+tr > :first-child {
+    padding-left: 0;
+}
+
+th {
+    text-align: left;
+    vertical-align: top;
+}
+
+table ul {
+    margin: 0;
+    padding: 0;
+}
+
+table li {
+    list-style: none;
+}
+
+input, .button {
+    font-size: inherit;
+    font-family: inherit;
+    padding: 0.4em;
+    border: #737373 1px solid;
+}
+
+input[type=submit], .button {
+    display: inline-block;
+    background: crimson;
+    padding: 0.4em 0.8em;
+    color: white;
+    border: crimson 1px solid;
+}
+
+input[type=submit]:hover, .button:hover {
+    background: white;
+    color: crimson;
+}
+
+.button {
+    text-decoration: none;
+    cursor: default;
+}
+
+
+/* layout of contacts pages */
+
+#contacts {
+    display: flex;
+    gap: 2em;
+}
+
+#contacts > :last-child {
+    flex-grow: 1;
+}
+
+#contacts nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+#contacts nav li {
+    list-style: none;
+}
+
+#contacts nav li:not(:last-child) {
+    border-bottom: whitesmoke 2px solid;
+}
+
+#contacts nav a {
+    display: block;
+    padding: 0.4em 0.8em;
+}
+
+#contacts table {
+    width: 100%;
+}
+
+#contact-search {
+    text-align: right;
+    margin-bottom: 1.6em;
+}
+
+mark {
+    border-radius: 5px;
+    padding: 0 1px;
+}
