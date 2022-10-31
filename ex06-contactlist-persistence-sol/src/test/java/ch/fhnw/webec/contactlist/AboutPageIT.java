@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
+//@AutoConfigureTestDatabase
 class AboutPageIT {
     // THIS IS AN END TO END TEST
     @Value("${local.server.port}")
