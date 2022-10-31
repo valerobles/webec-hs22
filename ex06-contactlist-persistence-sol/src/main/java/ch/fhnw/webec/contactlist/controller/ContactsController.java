@@ -46,7 +46,7 @@ public class ContactsController {
         var created = service.add(firstName.strip(), lastName.strip(),
                 jobTitle.isBlank() ? null : jobTitle.strip(),
                 company.isBlank() ? null : company.strip());
-        return "redirect:/contacts/" + created.getId();
+        return "redirect:/contacts/" + created.getId(); // goes back to contacts
     }
 
     @GetMapping("/contacts/{id}")

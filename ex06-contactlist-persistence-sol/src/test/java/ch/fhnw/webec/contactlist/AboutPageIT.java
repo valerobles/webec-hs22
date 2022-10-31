@@ -11,7 +11,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 class AboutPageIT {
-
+    // THIS IS AN END TO END TEST
     @Value("${local.server.port}")
     int port;
 
