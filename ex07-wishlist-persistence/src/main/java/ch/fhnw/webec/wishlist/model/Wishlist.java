@@ -19,7 +19,7 @@ public class Wishlist {
     private Integer id;
     private String name;
     private LocalDate createdDate;
-    @OneToMany(cascade = ALL)
+    @OneToMany(cascade = ALL) // If a wish changes then the wishlist changes, if a wishlist is deleted, the wishes will be deleted
     private List<Wish> entries = new ArrayList<>();
 
     protected Wishlist() {} // for JSON deserialization

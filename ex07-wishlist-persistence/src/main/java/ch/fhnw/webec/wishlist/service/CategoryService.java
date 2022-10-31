@@ -1,47 +1,35 @@
 package ch.fhnw.webec.wishlist.service;
 
 import ch.fhnw.webec.wishlist.model.Category;
+import ch.fhnw.webec.wishlist.data.CategoryRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
 
-import static java.util.Collections.unmodifiableList;
 
 @Service
 public class CategoryService {
 
-    private final List<Category> categories = new ArrayList<>();
-    private final AtomicInteger nextId = new AtomicInteger(0);
+    private final CategoryRepository repo;
 
-    private final WishlistService wishlistService;
-
-    public CategoryService(WishlistService wishlistService) {
-        this.wishlistService = wishlistService;
+    public CategoryService(CategoryRepository repo) {
+        this.repo = repo;
     }
 
     public List<Category> findAll() {
-        return unmodifiableList(categories);
+        return repo.findAll();
     }
 
     public Optional<Category> findById(int id) {
-        return categories.stream().filter(c -> c.getId() == id).findFirst();
+        return repo.findById(id);
     }
 
     public Category save(Category category) {
-        if (category.getId() == null) {
-            category.setId(nextId.getAndIncrement());
-            categories.add(category);
-        }
-        return category;
+        return repo.save(category);
     }
 
     public void delete(Category category) {
-        wishlistService.findAll().stream()
-                .flatMap(l -> l.getEntries().stream())
-                .forEach(w -> w.getCategories().remove(category));
-        categories.remove(category);
+       repo.delete(category);
     }
 }
