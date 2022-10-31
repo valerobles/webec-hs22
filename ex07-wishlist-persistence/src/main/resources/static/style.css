@@ -1,0 +1,206 @@
+:root {
+    --bg-color: rgb(19, 27, 30);
+    --bg-color-trans-1: rgba(19, 27, 30, 0.9);
+    --bg-color-trans-2: rgba(19, 27, 30, 0.5);
+    --text-color: #92bdad;
+    --text-color-muted: #345b4d;
+    --light-color: whitesmoke;
+    --highlight-color: white;
+    --normal-font: 'Lora', sans-serif;
+    --highlight-font: 'WindSong', cursive;
+    font-size: 110%;
+}
+
+/* General */
+
+* {
+    box-sizing: border-box;
+}
+
+body, input, select, textarea, button {
+    font-family: var(--normal-font);
+    color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    color: var(--light-color);
+    margin-bottom: 0.5em;
+}
+
+h1, h2 {
+    font-family: var(--highlight-font);
+    font-weight: 500;
+    margin-bottom: 0.2em;
+}
+
+:is(h1, h2) + * {
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 300%;
+}
+
+h2 {
+    font-size: 200%;
+}
+
+a {
+    color: var(--light-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--highlight-color);
+}
+
+input, select, textarea, button, .button {
+    font-size: 100%;
+    background: black;
+    padding: 0.3em 0.5em;
+    border: none;
+    border-radius: 0.3em;
+}
+
+button, .button {
+    color: var(--light-color);
+    padding: 0.3em 0.8em;
+}
+
+button:hover, .button:hover {
+    color: var(--highlight-color);
+    background: var(--text-color);
+}
+
+:is(input, select, button, .button) + :is(input, select, button, .button) {
+    margin-left: 0.5em;
+}
+
+
+/* Layout */
+
+body {
+    margin: 0;
+    background: var(--bg-color) url('background.jpg') no-repeat;
+    background-size: cover;
+}
+
+header {
+    font-size: 500%;
+    font-family: var(--highlight-font);
+    margin: 0.5em 0 0 -0.2em;
+    text-align: center;
+    color: var(--highlight-color);
+    text-shadow:
+            0 3px 3px var(--bg-color), 0 3px 5px var(--bg-color),
+            0 3px 10px var(--bg-color), 0 3px 20px var(--bg-color);
+}
+
+header a:hover {
+    text-shadow:
+            0 3px 3px black, 0 3px 5px black,
+            0 3px 10px black, 0 3px 20px black,
+            0 3px 50px black, 0 3px 100px black;
+}
+
+.main-container {
+    padding: 1em 2em 2em 2em;
+    background: var(--bg-color-trans-1);
+}
+
+.main-container > nav ul {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    margin: 0 0 0.5em 0;
+    padding: 0;
+    font-size: 120%;
+}
+
+.main-container > nav li {
+    padding: 0;
+    list-style: none;
+}
+
+main {
+    max-width: 800px;
+    margin: auto;
+}
+
+main > h1:first-child {
+    margin-top: 0;
+}
+
+main > div {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+main > div > :first-child {
+    margin-top: 0;
+}
+
+footer {
+    padding: 1em 1em 5em 1em;
+    text-align: center;
+    color: var(--text-color);
+    background: linear-gradient(var(--bg-color-trans-2), #00000000);
+    font-size: 110%;
+    text-shadow: 0 3px 3px var(--bg-color), 0 3px 20px var(--bg-color);
+}
+
+footer > :first-child {
+    font-style: italic;
+}
+
+footer > :first-child em {
+    font-family: var(--highlight-font);
+    font-weight: 500;
+    font-style: normal;
+    font-size: 140%;
+    margin-right: 0.3em;
+    color: var(--highlight-color);
+}
+
+footer > :nth-child(2) {
+    margin: 0.3em 0;
+    font-size: 50%;
+}
+
+
+/* Tables */
+
+table {
+    border-collapse: collapse;
+}
+
+table tr > * {
+    padding: 0 0 0.5em 0;
+}
+
+table :is(input, select) {
+    width: 100%;
+}
+
+table.nice {
+    width: 100%;
+}
+
+table.nice tr > * {
+    padding: 0.6em 0;
+}
+
+table.nice tr:not(:last-child) > * {
+    border-bottom: solid 1px var(--text-color-muted);
+}
+
+table.nice th {
+    font-weight: normal;
+    color: var(--light-color);
+    text-align: left;
+}
+
+table.nice :is(button, .button) {
+    margin: -0.3em 0;
+}

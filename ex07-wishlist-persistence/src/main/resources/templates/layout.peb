@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Wishlist{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=WindSong:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">     <link href="{{ href("/style.css") }}" rel="stylesheet">
+</head>
+<body>
+<header>
+    <a href="{{ href("/") }}">Wishlist</a>
+</header>
+<div class="main-container">
+    <nav>
+        <ul>
+            <li><a href="{{ href("/") }}" class="button">Wishlists</a></li>
+            <li><a href="{{ href("/category") }}" class="button">Categories</a></li>
+        </ul>
+    </nav>
+    {% block main %}{% endblock %}
+</div>
+<footer>
+    <div>May your <em>whishes</em> come true!</div>
+    <div>Background image by <a href="https://unsplash.com/@anniespratt">Annie Spratt</a> on <a href="https://unsplash.com">Unsplash</a></div>
+</footer>
+</body>
+</html>
