@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ href("/style.css") }}">
+    <title>{% block title %}Title{% endblock %}}</title>
+</head>
+<div id="container">
+    <header>
+        <h1>Contact List</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ href("/") }}" class="{{ request.servletPath == "/" ? "active" : "" }}">Home</a></li>
+                <li><a href="{{ href("/contacts") }}" class="{{ request.servletPath.startsWith("/contacts") ? "active" : "" }}">Contacts</a></li>
+                <li><a href="{{ href("/about") }}" class="{{ request.servletPath == "/about" ? "active" : "" }}">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    {% block main %}
+    {% endblock %}
+    <footer>
+        built with <a href="https://spring.io/">Spring</a>
+    </footer>
+</div>
+</html>
