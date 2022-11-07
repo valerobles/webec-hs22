@@ -1,0 +1,39 @@
+{# @pebvariable name="categories" type="java.util.List<ch.fhnw.webec.wishlist.model.Category>" #}
+{# @pebvariable name="wishCounts" type="java.util.Map<ch.fhnw.webec.wishlist.model.Category, java.util.Long>" #}
+
+{% extends "layout" %}
+
+{% block title %}Categories{% endblock %}
+
+{% block main%}
+<main>
+    <h1>Categories</h1>
+    {% if categories.empty %}
+        <p>No categories created yet. Create one!</p>
+    {% else %}
+        <table class="nice">
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.name }}</td>
+                    {% set count = wishCounts.get(category) %}
+                    <td>{{ count }} wish{{ count != 1 ? "es" : "" }}</td>
+                    <td style="width: 0">
+                        <form action="{{ href("/category/delete") }}" method="post">
+                            <input type="hidden" name="id" value="{{ category.id }}">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    <h3>Create a new category</h3>
+    <form action="{{ href("/category/create") }}" method="post">
+        <p>
+            <input type="text" name="name" required pattern=".*\S.*"
+                   placeholder="Name of the new category">
+            <button type="submit">Create</button>
+        </p>
+    </form>
+</main>
+{% endblock %}

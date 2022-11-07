@@ -1,0 +1,81 @@
+{# @pebvariable name="wishlist" type="ch.fhnw.webec.wishlist.model.Wishlist" #}
+{# @pebvariable name="categories" type="java.util.List<ch.fhnw.webec.wishlist.model.Category>" #}
+
+
+{% extends "layout" %}
+
+{% block title %}{{ wishlist.name }}{% endblock %}
+
+{% block main %}
+<main>
+    <h1>{{ wishlist.name }}</h1>
+    {% if wishlist.entries.empty %}
+        <p>This wishlist is still empty. Add the first wish!</p>
+    {% else %}
+        <table class="nice">
+            <tr>
+                <th>Description</th>
+                <th>Priority</th>
+                <th>Categories</th>
+                <th>Created</th>
+                <th>Options</th>
+            </tr>
+            {% for wish in wishlist.entriesByPriority %}
+                <tr>
+                    <td>
+                        {% if wish.url == null %}
+                            {{ wish.description }}
+                        {% else %}
+                            <a href="{{ wish.url }}">{{ wish.description }}</a>
+                        {% endif %}
+                    </td>
+                    <td>{{ wish.priority }}</td>
+                    <td>
+                        {{ wish.categoriesSorted | join(", ") }}
+                    </td>
+                    <td>{{ wish.createdDate | date("dd.MM.yyyy") }}</td>
+                    <td style="width: 0">
+                        <form action="{{ href("/wishlist/" + wishlist.id + "/delete-wish") }}" method="post">
+                            <input type="hidden" name="wishId" value="{{ wish.id }}">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    <h3>Add a wish</h3>
+    <form action="{{ href("/wishlist/" + wishlist.id + "/add-wish") }}" method="post">
+        <table style="min-width: 50%">
+            <tr>
+                <td>
+                    <input type="text" name="name" required pattern=".*\S.*"
+                           placeholder="Description of the wish">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="url" name="url" placeholder="URL (optional)">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number" name="priority" placeholder="Priority" required>
+                </td>
+            </tr>
+            {% if not categories.empty %}
+                <tr>
+                    <td>
+                        <select name="categoryIds" id="categories" multiple>
+                            {% for cat in categories %}
+                                <option value="{{ cat.id  }}">{{ cat.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+        <button type="submit">Add</button>
+    </form>
+</main>
+{% endblock %}
