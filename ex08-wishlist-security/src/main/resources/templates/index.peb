@@ -1,0 +1,37 @@
+{# @pebvariable name="wishlists" type="java.util.List<ch.fhnw.webec.wishlist.model.Wishlist>" #}
+
+{% extends "layout" %}
+
+{% block main%}
+<main>
+    <h1>Welcome</h1>
+    {% if wishlists.empty %}
+        <p>Get started by creating your first wishlist!</p>
+    {% else %}
+        <p>Select an existing wishlist or create a new one below.</p>
+        <table class="nice">
+            {% for list in wishlists %}
+                <tr>
+                    <td><a href="{{ href("/wishlist/" + list.id) }}">{{ list.name }}</a></td>
+                    <td>{{ list.entries.size }} wish{{ list.entries.size != 1 ? "es" : "" }}</td>
+                    <td>{{ list.createdDate | date("dd.MM.yyyy") }}</td>
+                    <td style="width: 0">
+                        <form action="{{ href("/wishlist/delete") }}" method="post">
+                            <input type="hidden" name="id" value="{{ list.id }}">
+                            <button type="submit" class="delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    <h3>Create a new wishlist</h3>
+    <form action="{{ href("/wishlist/create") }}" method="post">
+        <p>
+            <input type="text" name="name" required pattern=".*\S.*"
+                   placeholder="Name of the new wishlist">
+            <button type="submit">Create</button>
+        </p>
+    </form>
+</main>
+{% endblock %}
