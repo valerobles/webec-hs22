@@ -1,0 +1,25 @@
+{% macro row(name, idBase, value, search) %}
+    {% if value != null %}
+        <tr>
+            <th>{{ name }}</th>
+            <td id="{{ idBase }}-value">
+                {{ value.replaceAll("(?i)\Q" + search + "\E", "<mark>$0</mark>") | raw }}
+            </td>
+        </tr>
+    {% endif %}
+{% endmacro %}
+
+{% macro listRow(name, idBase, list, search) %}
+    {% if not list.isEmpty %}
+        <tr>
+            <th>{{ name }}</th>
+            <td id="{{ idBase }}-value">
+                <ul class="plain">
+                    {% for elem in list %}
+                        <li>{{ elem.replaceAll("(?i)\Q" + search + "\E", "<mark>$0</mark>") | raw }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    {% endif %}
+{% endmacro %}

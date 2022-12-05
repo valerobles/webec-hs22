@@ -1,0 +1,64 @@
+{# @pebvariable name="contact" type="ch.fhnw.webec.contactlist.model.Contact" #}
+
+{% extends "layout" %}
+{% import "macros/contacts" %}
+
+{% block title %}Contact List – Edit Contact{% endblock %}
+
+{% block main%}
+<main>
+    <h1>Edit Contact</h1>
+    <form method="post">
+        <div class="grid-form">
+            <label for="first-name" class="padded-label">First name:</label>
+            <input type="text" name="firstName" id="first-name"
+                   required pattern=".*\S.*" title="First name must not be empty"
+                   value="{{ contact.firstName }}">
+            <label for="last-name" class="padded-label">Last name:</label>
+            <input type="text" name="lastName" id="last-name"
+                   required pattern=".*\S.*" title="Last name must not be empty"
+                   value="{{ contact.lastName }}">
+            <span class="padded-label">
+                    Email addresses:
+                </span>
+            <ul class="plain">
+                {% for email in contact.email %}
+                    <li>
+                        <span class="padded-item">{{ email }}</span>
+                        <input type="checkbox" name="deleteEmail{{ loop.index }}" id="del-email-{{ loop.index }}">
+                        <label for="del-email-{{loop.index}}">Delete</label>
+                    </li>
+                {% endfor %}
+                <li>
+                    <input type="email" name="addEmail" placeholder="Add email address">
+                </li>
+            </ul>
+            <span class="padded-label">
+                    Phone numbers:
+                </span>
+            <ul class="plain">
+                {% for phone in contact.phone %}
+                    <li>
+                        <span class="padded-item">{{ phone }}</span>
+                        <input type="checkbox" name="deletePhone{{ loop.index }}" id="del-phone-{{ loop.index }}">
+                        <label for="del-phone-{{ loop.index }}">Delete</label>
+                    </li>
+                {% endfor %}
+                <li>
+                    <input type="text" name="addPhone" placeholder="Add phone number">
+                </li>
+            </ul>
+            <label for="job-title" class="padded-label">Job title:</label>
+            <input type="text" name="jobTitle" id="job-title"
+                   value="{{ contact.jobTitle }}">
+            <label for="company" class="padded-label">Company:</label>
+            <input type="text" name="company" id="company"
+                   value="{{ contact.company }}">
+        </div>
+        <p>
+            <input type="submit" value="Save">
+            <a href="{{ href("/contacts/" + contact.id) }}" class="button secondary">Cancel</a>
+        </p>
+    </form>
+</main>
+{% endblock %}

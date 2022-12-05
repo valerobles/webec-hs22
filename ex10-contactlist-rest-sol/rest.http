@@ -1,0 +1,38 @@
+GET http://localhost:8080/api/contact
+
+###
+GET http://localhost:8080/api/contact/1
+
+###
+DELETE http://localhost:8080/api/contact/1
+
+###
+GET http://localhost:8080/api/contact/1
+
+###
+GET http://localhost:8080/api/contact/2
+
+###
+PUT http://localhost:8080/api/contact/2
+Content-Type: application/json
+
+{
+  "firstName": "Mike",
+  "lastName": "Miller"
+}
+
+###
+GET http://localhost:8080/api/contact/2
+
+
+###
+POST http://localhost:8080/api/contact
+Content-Type: application/json
+
+{
+  "firstName": "Sarah",
+  "lastName": "Sutherland"
+}
+
+###
+GET http://localhost:8080/api/contact/31

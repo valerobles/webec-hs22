@@ -1,0 +1,28 @@
+{% extends "layout" %}
+
+{% block title %}Contact List – About{% endblock %}
+
+{% block main%}
+<main>
+    <h1>About</h1>
+    <p>
+        The Contact List App is an example web app for the <em>Web Engineering</em> course
+        at the <a href="https://www.fhnw.ch/de/studium/technik">Hochschule für Technik FHNW</a>.
+    </p>
+    <h2>Stats</h2>
+    <table class="small-table">
+        <tr>
+            <td>Contacts</td>
+            <td id="contact-count">{{ contactCount }}</td>
+        </tr>
+        <tr>
+            <td>Phone numbers</td>
+            <td id="phone-number-count">{{ phoneNumberCount }}</td>
+        </tr>
+        <tr>
+            <td>Email addresses</td>
+            <td id="email-count">{{ emailCount }}</td>
+        </tr>
+    </table>
+</main>
+{% endblock %}
