@@ -1,0 +1,30 @@
+{# @pebvariable name="contact" type="ch.fhnw.webec.contactlist.model.Contact" #}
+
+{% extends "layout" %}
+{% import "macros/contacts" %}
+
+{% block title %}Contact List – Add Contact{% endblock %}
+
+{% block main%}
+<main>
+    <h1>Add Contact</h1>
+    <form method="post">
+        <div class="grid-form">
+            <label for="first-name" class="padded-label">First name:</label>
+            <input type="text" name="firstName" id="first-name"
+                   required pattern=".*\S.*" title="First name must not be empty">
+            <label for="last-name" class="padded-label">Last name:</label>
+            <input type="text" name="lastName" id="last-name"
+                   required pattern=".*\S.*" title="Last name must not be empty">
+            <label for="job-title" class="padded-label">Job title:</label>
+            <input type="text" name="jobTitle" id="job-title">
+            <label for="company" class="padded-label">Company:</label>
+            <input type="text" name="company" id="company">
+        </div>
+        <p>
+            <input type="submit" value="Add">
+            <a class="button secondary" href="{{ href("/contacts") }}">Back</a>
+        </p>
+    </form>
+</main>
+{% endblock %}

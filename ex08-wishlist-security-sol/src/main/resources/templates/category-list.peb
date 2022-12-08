@@ -1,0 +1,54 @@
+{# @pebvariable name="categories" type="java.util.List<ch.fhnw.webec.wishlist.model.Category>" #}
+{# @pebvariable name="wishCounts" type="java.util.Map<ch.fhnw.webec.wishlist.model.Category, java.util.Long>" #}
+
+{% extends "layout" %}
+
+{% block title %}Categories{% endblock %}
+
+{% block main%}
+<main>
+    <h1>Categories</h1>
+    {% if categories.empty %}
+        <p>
+            No categories created yet.
+            {% if request.isUserInRole("EDITOR") %}
+                Create one!
+            {% endif %}
+        </p>
+    {% else %}
+        <table class="nice">
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.name }}</td>
+                    {% set count = wishCounts.get(category) %}
+                    <td>{{ count }} wish{{ count != 1 ? "es" : "" }}</td>
+                    {% if request.isUserInRole("EDITOR") %}
+                    <td style="width: 0">
+                        <form action="{{ href("/category/delete") }}" method="post">
+                            <button type="submit">Delete</button>
+                            <input type="hidden" name="id" value="{{ category.id }}">
+                            <input type="hidden"
+                                   name="{{ request.getAttribute("_csrf").parameterName }}"
+                                   value="{{ request.getAttribute("_csrf").token }}">
+                        </form>
+                    </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    {% if request.isUserInRole("EDITOR") %}
+        <h3>Create a new category</h3>
+        <form action="{{ href("/category/create") }}" method="post">
+            <p>
+                <input type="text" name="name" required pattern=".*\S.*"
+                       placeholder="Name of the new category">
+                <button type="submit">Create</button>
+                <input type="hidden"
+                       name="{{ request.getAttribute("_csrf").parameterName }}"
+                       value="{{ request.getAttribute("_csrf").token }}">
+            </p>
+        </form>
+    {% endif %}
+</main>
+{% endblock %}

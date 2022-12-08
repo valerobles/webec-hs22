@@ -1,0 +1,45 @@
+[
+  {
+    "name": "Peter’s list",
+    "createdDate": "2021-08-23",
+    "entries": [
+      {
+        "description": "Lego Millenium Falcon (the big one)",
+        "createdDate": "2021-11-21",
+        "priority": 10
+      },
+      {
+        "description": "Canon EOS R6",
+        "url": "https://www.digitec.ch/de/s1/product/canon-eos-r6-body-2010-mpx-vollformat-kamera-13410231",
+        "createdDate": "2022-04-07",
+        "priority": 5
+      },
+      {
+        "description": "A new guitar",
+        "createdDate": "2022-05-01",
+        "priority": 0
+      }
+    ]
+  },
+  {
+    "name": "Sarah’s Xmas List",
+    "createdDate": "2020-01-09",
+    "entries": [
+      {
+        "description": "Comics",
+        "createdDate": "2021-10-29",
+        "priority": 1
+      },
+      {
+        "description": "A pet...",
+        "createdDate": "2020-01-09",
+        "priority": 0
+      }
+    ]
+  },
+  {
+    "name": "Birthday Steve",
+    "createdDate": "2022-10-14",
+    "entries": []
+  }
+]

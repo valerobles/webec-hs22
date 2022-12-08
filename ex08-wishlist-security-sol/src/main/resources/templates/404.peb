@@ -1,0 +1,11 @@
+{# @pebvariable name="wishlists" type="java.util.List<ch.fhnw.webec.wishlist.model.Wishlist>" #}
+
+{% extends "layout" %}
+
+{% block main%}
+<main>
+    <h1>Not found</h1>
+    <p>This is not the page you're looking for...</p>
+    <p><a href="{{ href("/") }}">Back</a></p>
+</main>
+{% endblock %}
